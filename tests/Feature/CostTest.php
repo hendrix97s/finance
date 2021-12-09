@@ -22,7 +22,6 @@ class CostTest extends TestCase
             'user_id' => Auth::user()->id
         ]);
 
-        dd(json_encode($cost));
         $response = $this->get('/');
         $response->assertStatus(200);
     }
