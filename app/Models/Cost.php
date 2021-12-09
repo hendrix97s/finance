@@ -12,7 +12,8 @@ class Cost extends Model
     protected $fillable = [
         'type',
         'description',
-        'value'
+        'value',
+        'costed_at'
     ];
     
     protected $hidden = [
