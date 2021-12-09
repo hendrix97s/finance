@@ -19,6 +19,7 @@ class CreateCostsTable extends Migration
             $table->enum('type', ['fixed', 'variable']);
             $table->text('description');
             $table->float('value',8,2);
+            $table->date('costed_at');
             $table->timestamps();
         });
     }
