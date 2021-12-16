@@ -15,6 +15,11 @@ class CreateInputsTable extends Migration
     {
         Schema::create('inputs', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('user_id');
+            $table->enum('type', ['fixed', 'variable']);
+            $table->text('description');
+            $table->float('value',8,2);
+            $table->date('input_at');
             $table->timestamps();
         });
     }

@@ -5,22 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Input extends Model
+class Output extends Model
 {
     use HasFactory;
     
+        
     protected $fillable = [
         'user_id',
         'type',
         'description',
         'value',
-        'input_at',
+        'output_at',
     ];
     
     protected $hidden = [
         'id',
         'user_id'
     ];
-    
-    
 }
