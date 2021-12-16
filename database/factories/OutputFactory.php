@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Arr;
 
-class InputFactory extends Factory
+class OutputFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,7 +20,7 @@ class InputFactory extends Factory
             'type'        => Arr::random(['fixed','variable']),
             'description' => 'Descriptions for tests',
             'value'       => $this->faker->randomFloat(8,50,5000),
-            'input_at'    => $this->faker->date(),
+            'output_at'    => $this->faker->date(),
         ];
     }
 }
