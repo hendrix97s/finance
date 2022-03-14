@@ -1,8 +1,7 @@
 # For more information: https://laravel.com/docs/sail
 version: '3'
 services:
-    finance: 
-        container_name: finance
+    laravel.test:
         build:
             context: ./vendor/laravel/sail/runtimes/8.1
             dockerfile: Dockerfile
@@ -21,14 +20,13 @@ services:
         volumes:
             - '.:/var/www/html'
         networks:
-            - finance
+            - sail
         depends_on:
-            - finance_database
+            - mysql
             - redis
             - meilisearch
             - selenium
-    finance_database:
-        container_name: finance_database
+    mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'
@@ -42,7 +40,7 @@ services:
         volumes:
             - 'sailmysql:/var/lib/mysql'
         networks:
-            - finance
+            - sail
         healthcheck:
             test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
             retries: 3
@@ -54,7 +52,7 @@ services:
         volumes:
             - 'sailredis:/data'
         networks:
-            - finance
+            - sail
         healthcheck:
             test: ["CMD", "redis-cli", "ping"]
             retries: 3
@@ -67,7 +65,7 @@ services:
         volumes:
             - 'sailmeilisearch:/data.ms'
         networks:
-            - finance
+            - sail
         healthcheck:
             test: ["CMD", "wget", "--no-verbose", "--spider",  "http://localhost:7700/health"]
             retries: 3
@@ -78,16 +76,15 @@ services:
             - '${FORWARD_MAILHOG_PORT:-1025}:1025'
             - '${FORWARD_MAILHOG_DASHBOARD_PORT:-8025}:8025'
         networks:
-            - finance
+            - sail
     selenium:
         image: 'selenium/standalone-chrome'
         volumes:
             - '/dev/shm:/dev/shm'
         networks:
-            - finance
+            - sail
 networks:
-    finance:
-        name: finance
+    sail:
         driver: bridge
 volumes:
     sailmysql:

@@ -5,16 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Input extends Model
+class Finance extends Model
 {
     use HasFactory;
-    
-    protected $fillable = [
-        'origin',
-        'value',
-    ];
-    
-    protected $hidden = [];
-    
-    
 }

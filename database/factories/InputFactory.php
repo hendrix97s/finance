@@ -2,9 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Arr;
 
 class InputFactory extends Factory
 {
@@ -16,11 +14,7 @@ class InputFactory extends Factory
     public function definition()
     {
         return [
-            'user_id'     => User::factory(),
-            'type'        => Arr::random(['fixed','variable']),
-            'description' => 'Descriptions for tests',
-            'value'       => $this->faker->randomFloat(8,50,5000),
-            'input_at'    => $this->faker->date(),
+            //
         ];
     }
 }
